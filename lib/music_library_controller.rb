@@ -75,20 +75,20 @@ class MusicLibraryController
 
     #     #if input <= (Song.all.count) && input >= 0
     #     if input.between?(1, Song.all.count)
-    #         song = Song.all.sort_by{|song| song.name}[input -1]   
+    #         puts "Playing song #{list_songs[input -1].name} by #{list_songs[input -1].artist.name}" 
     #         binding.pry     
     #     end
 
-    #     puts "Playing song #{song.name} by #{song.artist.name}"
+        
     #   # binding.pry
     # end
 
     def play_song
         puts "Which song number would you like to play?"
-    
+        #list_songs
         input = gets.strip.to_i
-        if (1..Song.all.length).include?(input)
-          song = Song.all.sort{ |a, b| a.name <=> b.name }[input - 1]
+        if input.between?(1, Song.all.count)
+          song = Song.all.sort_by{ |song| song.name }[input - 1]
         end
     
         puts "Playing #{song.name} by #{song.artist.name}" if song
